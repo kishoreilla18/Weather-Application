@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+
+<body>
+    <center>
+        <h1>Weather App</h1>
+        <form id="myForm">
+            <input type="text" placeholder="Enter City" id="content" /><br>
+            <button>Get Weather</button>
+            <div >
+                <img src="http://pluspng.com/img-png/png-sun-and-clouds-sun-behind-the-cloud-clipart-by-iramsej-2400.png" alt="" width="10%">
+            </div>
+        </form>
+        <div id="display">
+            
+        </div>
+    </center>
+    <script>
+        let apikey = "446656e777ca6dd6fe21da1309763c1a";
+
+        myForm.addEventListener("submit", ((event) => {
+            event.preventDefault();
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${content.value
+                }&appid=${apikey}&units=metric`;
+            fetch(url)
+                .then((res) => {
+                    console.log(res);       
+                    return res.json();
+                })
+                .then((info) => {
+                    console.log(info);
+                    display.innerHTML = `<p>City : ${info.name}</p>
+                <p>Temperature : ${info.main.temp} <sup>o</sup>C</p>
+                <h4>clouds: ${info.weather[0].description}</h4>`;
+                })
+                .catch((error) => {
+                    alert("enter valid city name" + error);
+                })
+        }))
+    </script>
+</body>
+
+</html>
