@@ -1,4 +1,4 @@
-Weather App
+Weather AppLication
 A responsive Weather App built with HTML, CSS, and JavaScript that fetches real-time weather data using a public API (like OpenWeatherMap) based on city input.
 Real Time Weather Application
 
